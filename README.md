@@ -29,21 +29,21 @@ Get rid of MAMP / XAMPP / WAMP and all that boring and difficult stuff, bring up
   - Build the compose network by typing `docker-compose build` (*INTERNET CONNECTION IS REQUIRED THE FIRST TIME*)
   - When it is finished, you can start your network by typing `docker-compose up`
     - You'll see the following 4 containers coming up:
-      - `db_1`: this is the machine that's responsible of all your database data
+      - `db_1`: this is the machine that's responsible for all your database data
       - `php_1`: this is the machine where all your files are
       - `phpmyadmin_1`: this is the machine that enables PhpMyAdmin for you
       - `nginx_1`: this is the Nginx machine, used as a reverse proxy pointing to your php machine   
   - At the startup, php will try to execute a full `composer install`, a `schema update` and a full `assets install`
     - If everything went good, you should see a message indicating that the `php_1` container is ready to handle connections
     - If your db is big, it may be possible that `php_1` tries to execute a script on that db, before the `db_1` machine has created all tthe required steps:
-      - This can happen only the first time you brig up the project: if it happens, proceed as follow:
+      - This can happen only the first time you bring up the project: if it happens, proceed as follows:
         - Wait for `db_1` to show the message `mysqld: ready for connections.`
         - Do a `Ctrl / Cmd + C` to stop the process
         - Type `docker-compose up` again. This time the initialization will be very fast and `php_1` won't have problems connecting 
 
 ## Environment OK, let's have some fun
 
-  - You can access your symfony application by typing `http://localhost` on your browser (it's already defaulted on `app_dev.php`)
+  - You can access your Symfony application by typing `http://localhost` on your browser (it's already defaulted on `app_dev.php`)
   - You can access `PhpMyAdmin` by typing `http://localhost:8081` on your browser
 
    [docker]: <https://www.docker.com>
